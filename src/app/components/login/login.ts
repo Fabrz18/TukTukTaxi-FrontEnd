@@ -1,17 +1,21 @@
-import {Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-
-import {Router} from '@angular/router';
-import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
-import {MatIcon} from '@angular/material/icon';
-import {MatButton} from '@angular/material/button';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Router, RouterModule } from '@angular/router';
 import {AuthService} from '../../services/authservice';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatFormField, MatLabel, MatIcon, MatInput, MatButton],
+  standalone: true,
+  imports: [
+    MatCardModule, MatButtonModule, MatInputModule,
+    MatIconModule, ReactiveFormsModule, FormsModule,
+    MatCheckboxModule, RouterModule
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -19,7 +23,7 @@ export class Login {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
-
+  hidePassword = true;
   loginForm = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(4)]]
