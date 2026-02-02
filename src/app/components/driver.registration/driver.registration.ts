@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-driver.registration',
   imports: [
@@ -31,6 +32,7 @@ import { CommonModule } from '@angular/common';
 export class DriverRegistration {
   private _formBuilder = inject(FormBuilder);
   private router = inject(Router);
+  private location = inject(Location);
 
   isLinear = true;
 
@@ -65,5 +67,9 @@ export class DriverRegistration {
       alert('¡Registro completado! Revisa tu correo.');
       this.router.navigate(['/']);
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
