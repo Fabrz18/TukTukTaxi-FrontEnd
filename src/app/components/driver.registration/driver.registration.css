@@ -1,0 +1,108 @@
+:host {
+  font-family: 'Poppins', sans-serif;
+}
+
+.registration-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 30px;
+  position: relative;
+  animation: slideUp 0.5s ease-out;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.form-header p {
+  color: #666;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #999;
+}
+
+/* Grilla para inputs (2 columnas en desktop, 1 en mobile) */
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.stepper-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.confirmation-box {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.check-icon {
+  font-size: 80px;
+  height: 80px;
+  width: 80px;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+/* Material Overrides para estilo moderno */
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: #FF5722 !important; /* Color naranja marca */
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #FFC107 !important;
+}
+
+button[color="accent"] {
+  background: linear-gradient(45deg, #FF5722, #FFC107) !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 0 30px;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .input-grid {
+    grid-template-columns: 1fr; /* Una sola columna en celular */
+  }
+  .form-card {
+    padding: 20px 15px;
+  }
+}

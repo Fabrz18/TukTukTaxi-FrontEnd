@@ -1,1 +1,110 @@
-<p>driver.registration works!</p>
+<div class="registration-container">
+  <div class="form-card mat-elevation-z8">
+
+    <div class="form-header">
+      <button mat-icon-button routerLink="/" class="close-btn">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h2>Únete al equipo</h2>
+      <p>Gana dinero manejando tu moto</p>
+    </div>
+
+    <mat-stepper [linear]="isLinear" #stepper orientation="vertical">
+
+      <mat-step [stepControl]="personalFormGroup">
+        <form [formGroup]="personalFormGroup">
+          <ng-template matStepLabel>Datos Personales</ng-template>
+
+          <div class="input-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre Completo</mat-label>
+              <input matInput formControlName="fullName" placeholder="Juan Pérez">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>DNI / Cédula</mat-label>
+              <input matInput formControlName="dni" type="number">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" type="email">
+          </mat-form-field>
+
+          <div class="input-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Celular</mat-label>
+              <span matPrefix>+51 &nbsp;</span>
+              <input matInput formControlName="phone" type="tel">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="password" type="password">
+            </mat-form-field>
+          </div>
+
+          <div class="stepper-actions">
+            <button mat-flat-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="vehicleFormGroup">
+        <form [formGroup]="vehicleFormGroup">
+          <ng-template matStepLabel>Datos del Vehículo</ng-template>
+
+          <div class="input-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Marca</mat-label>
+              <mat-select formControlName="brand">
+                @for (brand of brands; track brand) {
+                  <mat-option [value]="brand">{{brand}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Modelo</mat-label>
+              <input matInput formControlName="model" placeholder="Ej. CB190R">
+            </mat-form-field>
+          </div>
+
+          <div class="input-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Placa</mat-label>
+              <input matInput formControlName="plate" placeholder="0000-0A" style="text-transform: uppercase;">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Nro. Licencia</mat-label>
+              <input matInput formControlName="licenseNumber">
+            </mat-form-field>
+          </div>
+
+          <div class="stepper-actions">
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-flat-button color="primary" matStepperNext>Revisar</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Listo</ng-template>
+
+        <div class="confirmation-box">
+          <mat-icon class="check-icon">check_circle</mat-icon>
+          <h3>¡Todo listo!</h3>
+          <p>Al hacer clic en enviar, aceptas nuestros términos y condiciones.</p>
+        </div>
+
+        <div class="stepper-actions">
+          <button mat-button matStepperPrevious>Atrás</button>
+          <button mat-raised-button color="accent" (click)="submitRegistration()">ENVIAR SOLICITUD</button>
+        </div>
+      </mat-step>
+
+    </mat-stepper>
+  </div>
+</div>
