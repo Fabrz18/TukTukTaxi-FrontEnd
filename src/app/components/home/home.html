@@ -1,0 +1,100 @@
+<mat-toolbar color="primary" class="navbar mat-elevation-z4">
+  <mat-icon class="logo-icon">two_wheeler</mat-icon>
+  <span>{{title}}</span>
+
+  <span class="spacer"></span>
+
+  <button mat-button class="nav-link hide-on-mobile">Sé un Conductor</button>
+  <button mat-button class="nav-link hide-on-mobile">Ayuda</button>
+
+  <button mat-stroked-button class="login-btn">Iniciar Sesión</button>
+  <button mat-flat-button color="accent">Regístrate</button>
+</mat-toolbar>
+
+<div class="hero-section">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Gánale al tráfico de la ciudad.</h1>
+      <p class="hero-subtitle">
+        Llega más rápido y seguro a tu destino. Solicita una moto en segundos.
+      </p>
+
+      <div class="cta-container">
+        <button mat-raised-button color="accent" class="cta-ride-button">
+          <mat-icon>hail</mat-icon>
+          SOLICITAR UN VIAJE AHORA
+        </button>
+      </div>
+
+      <p class="small-text">Viajes asegurados y monitoreados en tiempo real.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-container features-section">
+  <h2>¿Por qué elegir {{title}}?</h2>
+
+  <div class="cards-grid">
+    <mat-card class="feature-card mat-elevation-z2">
+      <mat-card-header>
+        <div mat-card-avatar class="feature-icon-container">
+          <mat-icon color="primary">bolt</mat-icon>
+        </div>
+        <mat-card-title>Rapidez Inigualable</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Olvídate de los embotellamientos. Nuestras motos sortean el tráfico para que llegues a tiempo siempre.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="feature-card mat-elevation-z2">
+      <mat-card-header>
+        <div mat-card-avatar class="feature-icon-container">
+          <mat-icon color="primary">attach_money</mat-icon>
+        </div>
+        <mat-card-title>Tarifas Económicas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Mucho más barato que un auto. Ahorra dinero en cada trayecto corto o mediano dentro de la ciudad.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="feature-card mat-elevation-z2">
+      <mat-card-header>
+        <div mat-card-avatar class="feature-icon-container">
+          <mat-icon color="warn">security</mat-icon> </div>
+        <mat-card-title>Conductores Verificados</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Tu seguridad es primero. Todos nuestros conductores pasan por rigurosos filtros de seguridad y validación de documentos.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="driver-cta-section mat-elevation-z4">
+  <div class="driver-content">
+    <h2>¿Tienes moto? Genera ingresos extra.</h2>
+    <p>
+      Maneja en tus propios horarios. Sé tu propio jefe y recibe tus ganancias semanalmente. Únete a la flota de motos más grande.
+    </p>
+    <button mat-raised-button color="primary" size="large">
+      <mat-icon>sports_motorsports</mat-icon>
+      REGÍSTRATE COMO CONDUCTOR
+    </button>
+  </div>
+  <div class="driver-image-placeholder hide-on-mobile">
+    <mat-icon class="huge-icon">two_wheeler</mat-icon>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2024 {{title}}. Todos los derechos reservados.</p>
+  <button mat-button color="primary" (click)="scrollToTop()">Volver arriba</button>
+</div>
