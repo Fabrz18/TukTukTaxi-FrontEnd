@@ -8,6 +8,7 @@ import {loginInterceptor} from './interceptor/login-interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+
     provideRouter(routes), provideHttpClient(withInterceptors([loginInterceptor])),
   ]
 };
