@@ -1,0 +1,168 @@
+:host {
+  font-family: 'Poppins', sans-serif;
+}
+
+.register-bg {
+  min-height: 100vh;
+  width: 100%;
+  /* Misma imagen o similar para consistencia */
+  background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1920&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px 0; /* Espacio para scroll en móviles */
+}
+
+/* Overlay oscuro */
+.register-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.8));
+  backdrop-filter: blur(5px);
+}
+
+.register-container {
+  z-index: 2;
+  width: 100%;
+  max-width: 450px;
+  padding: 15px;
+}
+
+/* --- TARJETA DE REDIRECCIÓN A CONDUCTOR --- */
+.driver-redirect-card {
+  background: linear-gradient(45deg, #FFC107, #FF9800);
+  border-radius: 16px;
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.driver-redirect-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 152, 0, 0.5);
+}
+
+.driver-content {
+  display: flex;
+  align-items: center;
+  color: #1a1a2e; /* Texto oscuro para contraste con amarillo */
+}
+
+.driver-icon {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.driver-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.driver-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+/* --- TARJETA PRINCIPAL (GLASSMORPHISM) --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px !important;
+  padding: 25px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.card-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  /* Texto con gradiente sutil */
+  background: linear-gradient(90deg, #fff, #ddd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-header p {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+/* Inputs personalizados */
+.custom-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* Forzando estilos Material Design para fondo oscuro */
+::ng-deep .custom-input .mat-mdc-text-field-wrapper {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px;
+}
+
+::ng-deep .custom-input .mat-mdc-form-field-label,
+::ng-deep .custom-input input,
+::ng-deep .custom-input mat-icon {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+::ng-deep .custom-input .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+/* Botón de Registro */
+.register-btn {
+  width: 100%;
+  padding: 22px !important;
+  border-radius: 50px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #FF5722, #F4511E) !important; /* Rojo/Naranja más intenso */
+  color: white !important;
+  box-shadow: 0 10px 20px rgba(244, 81, 30, 0.3);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Footer Login */
+.login-footer {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.login-footer a {
+  color: #FFC107; /* Amarillo para destacar */
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
