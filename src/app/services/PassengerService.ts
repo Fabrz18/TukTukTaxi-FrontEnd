@@ -7,7 +7,7 @@ import {Passenger} from '../model/Passenger';
 
 @Injectable({ providedIn: 'root' })
 export class PassengerService {
-  private url = `${environment.apiUrl}/api/passenger`;
+  private url = `${environment.apiUrl}/passenger`;
   private http = inject(HttpClient);
 
   createPassenger(passenger: Passenger): Observable<Passenger> {

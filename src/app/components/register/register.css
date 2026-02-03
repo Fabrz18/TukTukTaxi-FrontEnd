@@ -166,3 +166,19 @@
 .login-footer a:hover {
   text-decoration: underline;
 }
+
+.register-btn {
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(45deg, #FFC107, #FF9800) !important;
+  color: #1a1a2e !important;
+  box-shadow: 0 10px 22px rgba(255, 152, 0, 0.45);
+}

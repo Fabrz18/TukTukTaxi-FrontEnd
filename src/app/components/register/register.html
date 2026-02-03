@@ -35,6 +35,18 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="custom-input">
+            <mat-label>Dni</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput formControlName="dni" placeholder="88888888">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="custom-input">
+            <mat-label>Número Telefónico</mat-label>
+            <mat-icon matPrefix>phone</mat-icon>
+            <input matInput formControlName="phoneNumber" placeholder="999999999">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="custom-input">
             <mat-label>Contraseña</mat-label>
             <mat-icon matPrefix>lock</mat-icon>
             <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
