@@ -4,4 +4,5 @@ export class Passenger {
   fullName: string;
   phoneNumber: string;
   email: string;
+  password: string;
 }

@@ -49,6 +49,7 @@ export class Register {
       email: data.email!,
       dni: data.dni!,
       phoneNumber: data.phoneNumber!,
+      password: password!,
       status: true
     };
 

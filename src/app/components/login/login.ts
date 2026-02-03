@@ -33,9 +33,6 @@ export class Login {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          console.log('Login exitoso, token guardado:', localStorage.getItem('token'));
-
-
           // Intentamos navegar y capturamos el resultado
           this.router.navigate(['/home']).then(nav => {
             console.log('¿Navegación exitosa?:', nav);
