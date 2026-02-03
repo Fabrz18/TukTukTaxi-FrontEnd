@@ -1,0 +1,67 @@
+<div class="dashboard-container">
+
+  <div class="header">
+    <div class="profile-info">
+      <div class="avatar-circle">
+        <mat-icon>person</mat-icon>
+      </div>
+      <div class="text-info">
+        <h3>Hola, Conductor</h3>
+        <span class="status-badge" [class.online]="isOnline">
+          {{ isOnline ? 'EN LÍNEA' : 'OFFLINE' }}
+        </span>
+      </div>
+    </div>
+    <button mat-icon-button class="logout-btn" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+
+  <div class="glass-card earnings-card">
+    <span class="card-label">Ganancias de hoy</span>
+    <h1 class="money-text">S/ {{ todayEarnings | number:'1.2-2' }}</h1>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <mat-icon class="stat-icon">two_wheeler</mat-icon>
+        <div>
+          <strong>{{ completedTrips }}</strong>
+          <small>Viajes</small>
+        </div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <mat-icon class="stat-icon star">star</mat-icon>
+        <div>
+          <strong>{{ rating }}</strong>
+          <small>Calif.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-container">
+    <div class="pulse-ring" [class.active]="isOnline"></div>
+
+    <button class="connect-btn" [class.active]="isOnline" (click)="toggleStatus()">
+      <mat-icon class="btn-icon">
+        {{ isOnline ? 'power_settings_new' : 'play_arrow' }}
+      </mat-icon>
+      <span class="btn-text">{{ isOnline ? 'DESCONECTAR' : 'INICIAR' }}</span>
+    </button>
+
+    <p class="status-message">
+      @if (isOnline) {
+        Estás visible para pasajeros cercanos...
+      } @else {
+        Estás desconectado. Conéctate para recibir viajes.
+      }
+    </p>
+  </div>
+
+  <div class="bottom-nav glass-panel">
+    <button class="nav-item active"><mat-icon>home</mat-icon></button>
+    <button class="nav-item"><mat-icon>list</mat-icon></button> <button class="nav-item"><mat-icon>account_balance_wallet</mat-icon></button> <button class="nav-item"><mat-icon>settings</mat-icon></button>
+  </div>
+
+</div>

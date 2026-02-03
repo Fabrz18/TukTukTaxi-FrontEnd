@@ -115,6 +115,7 @@
 
 /* Inputs personalizados */
 .custom-input {
+  color: white;
   width: 100%;
   margin-bottom: 8px;
 }
@@ -135,18 +136,9 @@
   display: none;
 }
 
-/* Botón de Registro */
-.register-btn {
-  width: 100%;
-  padding: 22px !important;
-  border-radius: 50px !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  background: linear-gradient(45deg, #FF5722, #F4511E) !important; /* Rojo/Naranja más intenso */
-  color: white !important;
-  box-shadow: 0 10px 20px rgba(244, 81, 30, 0.3);
-  margin-top: 20px;
-  margin-bottom: 20px;
+
+mat-label {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Footer Login */
@@ -166,6 +158,14 @@
 .login-footer a:hover {
   text-decoration: underline;
 }
+.register-btn:disabled {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  pointer-events: none;
+}
 
 .register-btn {
   cursor: pointer;
@@ -174,6 +174,16 @@
     box-shadow 0.25s ease,
     background 0.25s ease,
     color 0.25s ease;
+  width: 100%;
+  padding: 22px !important;
+  border-radius: 50px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #FF5722, #F4511E); /* Rojo/Naranja más intenso */
+  color: white !important;
+  box-shadow: 0 10px 20px rgba(244, 81, 30, 0.3);
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .register-btn:hover {

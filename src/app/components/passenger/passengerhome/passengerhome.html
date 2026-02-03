@@ -1,0 +1,67 @@
+<div class="screen-container">
+
+  <div class="map-background"></div>
+
+  <div class="top-header">
+    <button mat-icon-button class="menu-btn glass-btn">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="profile-pic glass-btn">
+      <img src="https://i.pravatar.cc/150?img=11" alt="Profile">
+    </div>
+  </div>
+
+  <div class="gps-marker">
+    <div class="pulse"></div>
+    <div class="pin-center">
+      <mat-icon>two_wheeler</mat-icon>
+    </div>
+  </div>
+
+  <div class="bottom-panel glass-card">
+    <div class="panel-handle"></div>
+
+    <h3>¿A dónde vamos hoy?</h3>
+
+    <div class="route-inputs">
+
+      <div class="connector-line">
+        <div class="dot start"></div>
+        <div class="line"></div>
+        <div class="dot end"></div>
+      </div>
+
+      <div class="inputs-container">
+        <div class="input-box">
+          <input type="text" [(ngModel)]="pickupLocation" placeholder="Punto de partida">
+          <mat-icon class="gps-icon">my_location</mat-icon>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="input-box highlight">
+          <input type="text" [(ngModel)]="destination" placeholder="Ingresa tu destino...">
+          <mat-icon class="search-icon">search</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="recent-scroller">
+      @for (place of recentPlaces; track place.name) {
+        <div class="recent-chip" matRipple (click)="selectRecent(place.address)">
+          <div class="chip-icon">
+            <mat-icon>{{ place.icon }}</mat-icon>
+          </div>
+          <span>{{ place.name }}</span>
+        </div>
+      }
+    </div>
+
+    <button class="request-btn" (click)="searchDriver()">
+      BUSCAR MOTO
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+
+  </div>
+</div>

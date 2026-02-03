@@ -1,0 +1,244 @@
+:host {
+  font-family: 'Poppins', sans-serif;
+}
+
+.screen-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #222;
+}
+
+/* --- 1. MAPA DE FONDO --- */
+/* Usamos una imagen oscura de mapa real para el efecto */
+.map-background {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('https://raw.githubusercontent.com/map box/mapbox-gl-js/main/test/integration/render/tests/fill-extrusion-pattern/style.png');
+  /* Nota: Para producción, usa una API de Google Maps con estilo 'Night Mode' */
+  background-image: url('https://i.pinimg.com/736x/8a/a6/50/8aa6503c51f38e3fa52a514d1222e96d.jpg'); /* Imagen ejemplo mapa oscuro */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8); /* Oscurecer un poco para resaltar la UI */
+  z-index: 1;
+}
+
+/* --- 2. HEADER --- */
+.top-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.glass-btn {
+  background: rgba(30, 30, 40, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.profile-pic img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+/* --- 3. GPS PIN (Animación) --- */
+.gps-marker {
+  position: absolute;
+  top: 45%; /* Un poco más arriba del centro visual */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pin-center {
+  width: 50px;
+  height: 50px;
+  background: #FFC107;
+  color: #1a1a2e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 2;
+}
+
+.pulse {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 193, 7, 0.3);
+  border-radius: 50%;
+  animation: radar 2s infinite;
+  z-index: 1;
+}
+
+@keyframes radar {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+
+/* --- 4. BOTTOM PANEL (Glassmorphism) --- */
+.bottom-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(22, 22, 30, 0.95); /* Casi sólido para legibilidad */
+  backdrop-filter: blur(20px);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 25px;
+  z-index: 20;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  color: white;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.panel-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 0 auto 20px auto;
+}
+
+.bottom-panel h3 {
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Inputs de Ruta */
+.route-inputs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.connector-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.start { background: #aaa; }
+.dot.end { background: #FFC107; box-shadow: 0 0 5px #FFC107; }
+.line { width: 2px; height: 35px; background: #444; margin: 2px 0; }
+
+.inputs-container {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+.input-box input::placeholder { color: rgba(255,255,255,0.4); }
+
+.gps-icon { color: #4CAF50; font-size: 18px; width: 18px; height: 18px; cursor: pointer; }
+.search-icon { color: #FFC107; }
+
+.divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0 15px; }
+
+/* Chips Recientes */
+.recent-scroller {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  /* Ocultar scrollbar */
+  scrollbar-width: none;
+}
+.recent-scroller::-webkit-scrollbar { display: none; }
+
+.recent-chip {
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 8px 16px 8px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.recent-chip:hover { background: rgba(255,255,255,0.15); }
+
+.chip-icon {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chip-icon mat-icon { font-size: 16px; width: 16px; height: 16px; }
+
+/* Botón de Acción */
+.request-btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(45deg, #FFC107, #FF9800);
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 20px rgba(255, 152, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.request-btn:active { transform: scale(0.98); }
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}

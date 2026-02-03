@@ -33,12 +33,29 @@ export class Login {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          // Intentamos navegar y capturamos el resultado
-          this.router.navigate(['/home']).then(nav => {
-            console.log('¿Navegación exitosa?:', nav);
-          }, err => {
-            console.error('Error en navegación:', err);
-          });
+          const token = this.authService.getToken();
+          if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+
+            let roles: string[] = [];
+
+            if (payload.roles) {
+              roles = payload.roles.map((r: string) =>
+                r.replace('ROLE_', '').toUpperCase()
+              );
+            }
+
+            if (roles.includes('CONDUCTOR')) {
+              this.router.navigate(['/driver/home']);
+            } else if (roles.includes('PASAJERO')) {
+              this.router.navigate(['/passenger/home']);
+            } else {
+              console.log('NO TIENES ROL', roles);
+              this.router.navigate(['/home']);
+            }
+
+          }
+
 
         },
         error: (err) => {
