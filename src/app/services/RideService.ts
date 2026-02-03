@@ -6,7 +6,7 @@ import {Ride} from '../model/Ride';
 
 @Injectable({ providedIn: 'root' })
 export class RideService {
-  private url = `${environment.apiUrl}/api/ride`;
+  private url = `${environment.apiUrl}/ride`;
   private http = inject(HttpClient);
 
   registerRide(ride: Ride): Observable<Ride> {

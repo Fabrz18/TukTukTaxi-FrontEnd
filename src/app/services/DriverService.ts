@@ -6,7 +6,7 @@ import {Driver} from '../model/Driver';
 
 @Injectable({ providedIn: 'root' })
 export class DriverService {
-  private url = `${environment.apiUrl}/api/drivers`;
+  private url = `${environment.apiUrl}/driver`;
   private http = inject(HttpClient);
 
   createDriver(driver: Driver): Observable<Driver> {

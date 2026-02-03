@@ -1,5 +1,5 @@
 <div class="registration-container">
-  <div class="form-card mat-elevation-z8">
+  <div class="form-card mat-elevation-z8 glass-card">
 
     <div class="form-header">
       <button mat-icon-button class="close-btn" (click)="goBack()">
@@ -16,30 +16,31 @@
           <ng-template matStepLabel>Datos Personales</ng-template>
 
           <div class="input-grid">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Nombre Completo</mat-label>
               <input matInput formControlName="fullName" placeholder="Juan Pérez">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>DNI / Cédula</mat-label>
-              <input matInput formControlName="dni" type="number">
-            </mat-form-field>
+              <input matInput formControlName="dni" type="text" maxlength="8"> </mat-form-field>
           </div>
 
-          <mat-form-field appearance="outline" class="full-width">
+          <mat-form-field appearance="outline" class="full-width custom-input">
             <mat-label>Correo Electrónico</mat-label>
             <input matInput formControlName="email" type="email">
           </mat-form-field>
 
           <div class="input-grid">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Celular</mat-label>
-              <span matPrefix>+51 &nbsp;</span>
-              <input matInput formControlName="phone" type="tel">
+              <span matPrefix style="color:black; margin-right: 5px;">+51 |&nbsp;</span>
+              <input matInput formControlName="phoneNumber" type="tel" maxlength="9">
             </mat-form-field>
+          </div>
 
-            <mat-form-field appearance="outline">
+          <div class="input-grid">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Contraseña</mat-label>
               <input matInput formControlName="password" type="password">
             </mat-form-field>
@@ -56,35 +57,49 @@
           <ng-template matStepLabel>Datos del Vehículo</ng-template>
 
           <div class="input-grid">
-            <mat-form-field appearance="outline">
+
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Marca</mat-label>
               <mat-select formControlName="brand">
-                @for (brand of brands; track brand) {
+                @for (brand of uniqueBrands; track brand) {
                   <mat-option [value]="brand">{{brand}}</mat-option>
                 }
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Modelo</mat-label>
-              <input matInput formControlName="model" placeholder="Ej. CB190R">
+              <mat-select formControlName="model" [disabled]="!vehicleFormGroup.get('brand')?.value">
+                @if (availableModels.length === 0) {
+                  <mat-option disabled>Seleccione una marca primero</mat-option>
+                }
+                @for (model of availableModels; track model) {
+                  <mat-option [value]="model">{{model}}</mat-option>
+                }
+              </mat-select>
             </mat-form-field>
           </div>
 
           <div class="input-grid">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="custom-input">
               <mat-label>Placa</mat-label>
-              <input matInput formControlName="plate" placeholder="0000-0A" style="text-transform: uppercase;">
+              <input matInput
+                     formControlName="plate"
+                     placeholder="ABC-123"
+                     oninput="this.value = this.value.toUpperCase()"
+                     maxlength="7">
+              @if (vehicleFormGroup.get('plate')?.hasError('pattern')) {
+                <mat-error>Formato inválido. Use: <strong>ABC-123</strong></mat-error>
+              }
+              @if (vehicleFormGroup.get('plate')?.hasError('required')) {
+                <mat-error>La placa es requerida</mat-error>
+              }
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Nro. Licencia</mat-label>
-              <input matInput formControlName="licenseNumber">
-            </mat-form-field>
           </div>
 
           <div class="stepper-actions">
-            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperPrevious class="white-text-btn">Atrás</button>
             <button mat-flat-button color="primary" matStepperNext>Revisar</button>
           </div>
         </form>
@@ -100,7 +115,7 @@
         </div>
 
         <div class="stepper-actions">
-          <button mat-button matStepperPrevious>Atrás</button>
+          <button mat-button matStepperPrevious class="white-text-btn">Atrás</button>
           <button mat-raised-button color="accent" (click)="submitRegistration()">ENVIAR SOLICITUD</button>
         </div>
       </mat-step>

@@ -7,7 +7,7 @@ import {Vehicle} from '../model/Vehicle';
 
 @Injectable({ providedIn: 'root' })
 export class VehicleService {
-  private url = `${environment.apiUrl}/api/vehicle`;
+  private url = `${environment.apiUrl}/vehicle`;
   private http = inject(HttpClient);
 
   createVehicle(vehicle: Vehicle): Observable<Vehicle> {
